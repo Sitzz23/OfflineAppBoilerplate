@@ -57,6 +57,11 @@
         }
       ],
       "@skam22/watermelondb-expo-plugin"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "d3501fd8-a13c-490d-8176-cb034b60c7f5"
+      }
+    }
   }
 }

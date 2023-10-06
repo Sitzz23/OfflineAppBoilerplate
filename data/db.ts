@@ -1,5 +1,6 @@
 import { Database } from "@nozbe/watermelondb";
 import SQLiteAdapter from "@nozbe/watermelondb/adapters/sqlite";
+// import { DatabaseProvider } from '@nozbe/watermelondb/react'
 import Todo from "./models/todo";
 import todoSchema from "./schema";
 
@@ -13,4 +14,4 @@ const database = new Database({
   modelClasses: [Todo],
 });
 
-export { database };
+export default database
