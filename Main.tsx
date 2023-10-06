@@ -1,14 +1,12 @@
 import {
   StyleSheet,
   View,
-  Dimensions,
-  ScrollView,
   Button,
   Text,
   SafeAreaView,
   StatusBar,
 } from "react-native";
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import { useWatermelonDB } from "./useWatermelonDB";
 import database from "./data/db";
 
@@ -34,7 +32,6 @@ export default function App() {
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle="light-content" />
       <Button title="Add todo" onPress={() => addTodo()} />
-
       <View>
         {todos.map((todo) => (
           <View>
