@@ -175,7 +175,7 @@ const ItemRemarkLive = withObservables(["remark"], ({ remark }) => ({
   remark: remark.observe(),
 }))(ItemRemark);
 
-const ItemTodoLive = withObservables(["todo"], ({ todo }) => ({
+const ItemTodoLive = withObservables(["task"], ({ todo }) => ({
   todo: todo.observe(),
   remarks: todo.remarks.observe(),
 }))(ItemTodo);

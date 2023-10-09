@@ -9,15 +9,15 @@ import {
 } from "@nozbe/watermelondb/decorators";
 
 export default class Remark extends Model {
-  static table = "remarks";
+  static table = "remark";
   static associations = {
-    todos: { type: "belongs_to", key: "todo_id" },
+    todos: { type: "belongs_to", key: "task_id" },
   };
 
   @field("body") body;
   //   @field("is_nasty") isNasty;
-  @field("todo_id") todoId;
-  @relation("todos", "todo_id") todo;
+  @field("task_id") todoId;
+  @relation("task", "tasks_id") todo;
   @readonly @date("created_at") createdAt;
   @readonly @date("updated_at") updatedAt;
 

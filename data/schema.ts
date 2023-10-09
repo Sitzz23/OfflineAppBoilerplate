@@ -4,7 +4,7 @@ const todoSchema = appSchema({
   version: 2,
   tables: [
     tableSchema({
-      name: "todos",
+      name: "task",
       columns: [
         { name: "title", type: "string" },
         { name: "body", type: "string" },
@@ -13,10 +13,10 @@ const todoSchema = appSchema({
       ],
     }),
     tableSchema({
-      name: "remarks",
+      name: "remark",
       columns: [
         { name: "body", type: "string" },
-        { name: "todo_id", type: "string", isIndexed: true },
+        { name: "task_id", type: "string", isIndexed: true },
         // { name: "is_nasty", type: "boolean" },
         { name: "created_at", type: "number" },
         { name: "updated_at", type: "number" },
