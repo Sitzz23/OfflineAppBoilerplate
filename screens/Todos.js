@@ -18,7 +18,7 @@ import {
 import { TodoDao } from "../data";
 import ItemTodo from "../components/ItemTodo";
 import { Ionicons } from "@expo/vector-icons";
-import SyncTodo from "../SyncTodo";
+import { SyncTodo } from "../SyncTodo";
 import { database } from "../data";
 
 const Todos = ({ navigation, todos }) => {
