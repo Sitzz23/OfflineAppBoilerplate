@@ -1,53 +1,15 @@
-import {
-  StyleSheet,
-  View,
-  Button,
-  Text,
-  SafeAreaView,
-  StatusBar,
-} from "react-native";
-import React from "react";
-import { useWatermelonDB } from "./useWatermelonDB";
-import database from "./data/db";
+import React, { Fragment } from "react";
+import { StatusBar } from "react-native";
+import Routes from "./Routes";
+import { NavigationContainer } from "@react-navigation/native";
 
-export default function App() {
-  const todos = useWatermelonDB("todos");
-
-  const addTodo = async () => {
-    const newTodo = await database.write(async () => {
-      return await database.collections
-        .get("todos")
-        .create(
-          (todo: { title: string; completed: boolean; created_at: number }) => {
-            todo.title = "todo 1";
-            todo.completed = false;
-            todo.created_at = new Date().getTime();
-          }
-        );
-    });
-    console.log("New Todo: ", newTodo);
-  };
-
+export default function Main() {
   return (
-    <SafeAreaView style={styles.container}>
-      <StatusBar barStyle="light-content" />
-      <Button title="Add todo" onPress={() => addTodo()} />
-      <View>
-        {todos.map((todo) => (
-          <View>
-            <Text>{todo.title}</Text>
-          </View>
-        ))}
-      </View>
-    </SafeAreaView>
+    <Fragment>
+      <StatusBar barStyle="light-content" backgroundColor={"#161616"} />
+      <NavigationContainer>
+        <Routes />
+      </NavigationContainer>
+    </Fragment>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
