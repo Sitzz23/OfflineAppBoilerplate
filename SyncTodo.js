@@ -2,22 +2,22 @@ import { synchronize } from "@nozbe/watermelondb/sync";
 import { database } from "./data";
 
 export async function SyncTodo() {
-  await synchronize({ database, pullChanges, pushChanges });
+  await synchronize({ database, pullChanges });
 }
 
 const pullChanges = async ({ lastPulledAt }) => {
   const response = await fetch(
-    `https://5000-akashprasad-offlinefirs-877uepdelda.ws-us105.gitpod.io/sync`,
-    {
-      body: JSON.stringify({ lastPulledAt }),
-    }
+    `https://5000-akashprasad-offlinefirs-877uepdelda.ws-us105.gitpod.io/sync?last_pulled_at=${lastPulledAt}`
+    // {
+    //   body: JSON.stringify({ lastPulledAt }),
+    // }
   );
   if (!response.ok) {
     throw new Error(await response.text());
   }
 
   const { changes, timestamp } = await response.json();
-  return { changes, timestamp };
+  return { changes: {}, timestamp: new Date().getTime() };
 };
 
 const pushChanges = async ({ changes, lastPulledAt }) => {
