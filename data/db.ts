@@ -8,6 +8,7 @@ import todoSchema from "./schema";
 const adapter = new SQLiteAdapter({
   dbName: "myDatabase",
   schema: todoSchema,
+  
 });
 
 const database = new Database({

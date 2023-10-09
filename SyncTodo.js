@@ -20,7 +20,7 @@ const pullChanges = async ({ lastPulledAt }) => {
 const pushChanges = async ({ changes, lastPulledAt }) => {
   console.warn("changes", changes);
   const response = await fetch(
-    `https://5000-akashprasad-offlinefirs-877uepdelda.ws-us105.gitpod.io/sync?last_pulled_at=${lastPulledAt}`,
+    "http://192.168.121.226:8000/sync?last_pulled_at=2023-10-09T12%3A18%3A52.350Z",
     {
       method: "POST",
       body: JSON.stringify(changes),

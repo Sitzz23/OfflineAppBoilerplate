@@ -20,7 +20,7 @@ export default class Todo extends Model {
   @readonly @date("created_at") createdAt;
   @readonly @date("updated_at") updatedAt;
 
-  // Actions
+  // Actionsr
   @writer async getTodo() {
     return {
       title: this.title,
