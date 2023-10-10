@@ -23,7 +23,7 @@ const pushChanges = async ({ changes, lastPulledAt }) => {
   console.log("Push changes", changes, lastPulledAt);
 
   const response = await axios.post(
-    `http://192.168.200.213:8000/sync?last_pulled_at=${lastPulledAt}`,
+    `http://10.0.2.2:8000/sync?last_pulled_at=${lastPulledAt}`,
     changes
   );
 
