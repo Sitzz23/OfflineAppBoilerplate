@@ -8,7 +8,6 @@ import todoSchema from "./schema";
 const adapter = new SQLiteAdapter({
   dbName: "myDatabase",
   schema: todoSchema,
-  
 });
 
 const database = new Database({
@@ -16,4 +15,10 @@ const database = new Database({
   modelClasses: [Todo, Remark],
 });
 
-export {database}
+import { setGenerator } from "@nozbe/watermelondb/utils/common/randomId";
+import "react-native-get-random-values";
+import { v4 } from "uuid";
+
+setGenerator(() => v4());
+
+export { database };
