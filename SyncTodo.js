@@ -1,48 +1,48 @@
 import { synchronize } from "@nozbe/watermelondb/sync";
-// import { database } from "./data/db";
 import axios from "axios";
 
 export async function SyncTodo(database) {
-  await synchronize({ database, pullChanges });
+  await synchronize({ database, pullChanges, pushChanges });
 }
 
 const pullChanges = async ({ lastPulledAt }) => {
-  console.log(lastPulledAt + "no time");
+  console.log(lastPulledAt + " time");
   const response = await axios.get(
-    // `http://localhost:8000/sync?last_pulled_at=${lastPulledAt}`
-    "http://192.168.121.226:8000/sync?last_pulled_at=2023-10-09T12%3A18%3A52.350Z"
+    `http://192.168.200.213:8000/sync?last_pulled_at=${
+      lastPulledAt ? lastPulledAt : 0
+    }`
   );
-  console.log(response.data);
   const { changes, timestamp } = await response.data;
   return { changes, timestamp };
 };
 
 const pushChanges = async ({ changes, lastPulledAt }) => {
-  console.warn("changes", changes);
-  const response = await fetch(
-    "http://192.168.121.226:8000/sync?last_pulled_at=2023-10-09T12%3A18%3A52.350Z",
-    {
-      method: "POST",
-      body: JSON.stringify(changes),
-    }
+  console.log("Push changes", changes, lastPulledAt);
+
+  const response = await axios.post(
+    `http://192.168.200.213:8000/sync?last_pulled_at=${lastPulledAt}`,
+    changes
   );
-  if (!response.ok) {
-    throw new Error(await response.text());
-  }
+
+  console.log(response.data);
+  // console.warn("changes", changes);
+  // const response = await fetch(
+  //   `http://192.168.200.213:8000/sync?last_pulled_at=${lastPulledAt}`,
+  //   {
+  //     method: "POST",
+  //     body: { changes },
+  //   }
+  // );
+  // if (!response.ok) {
+  //   throw new Error(await response.text());
+  // }
+  // console.log(changes);
+  // console.log(lastPulledAt);
+  // const response = await axios.post(
+  //   `http://192.168.200.213:8000/sync?last_pulled_at=${lastPulledAt}`,
+  //   changes
+  // );
+  // if (!response.ok) {
+  //   throw new Error(await response.text());
+  // }
 };
-
-// async function pullChanges({ lastPulledAt }) {
-//   const response = await axios.get(
-//     "http://192.168.121.226:8000/sync?last_pulled_at=2023-10-09T12%3A18%3A52.350Z"
-//   );
-//   const { changes, timestamp } = response;
-//   doSomething({ changes, timestamp });
-// }
-
-// async function pushChanges({ changes }) {
-//   const response = await axios.post(
-//     "http://192.168.121.226:8000/sync?last_pulled_at=2023-10-09T12%3A18%3A52.350Z",
-//     changes
-//   );
-//   doSomething(response);
-// }
