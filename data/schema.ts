@@ -17,7 +17,6 @@ const todoSchema = appSchema({
       columns: [
         { name: "body", type: "string" },
         { name: "todo_id", type: "string", isIndexed: true },
-        // { name: "is_nasty", type: "boolean" },
         { name: "created_at", type: "number" },
         { name: "updated_at", type: "number" },
       ],

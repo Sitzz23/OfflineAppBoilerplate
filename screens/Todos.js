@@ -171,22 +171,21 @@ const styles = StyleSheet.create({
   header: {
     alignItems: "center",
     flexDirection: "row",
+    gap: 4,
     padding: 16,
   },
   addButton: {
-    borderColor: "gray",
     paddingHorizontal: 20,
     paddingVertical: 8,
-    borderRadius: 6,
-    borderWidth: 1,
-    color: "black",
+    borderRadius: 50,
+    backgroundColor: "black",
   },
   addButtonLabel: {
     fontSize: 14,
-    color: "black",
+    color: "white",
   },
   headerTitle: {
-    fontSize: 14,
+    fontSize: 18,
     fontWeight: "bold",
     flex: 1,
     color: "black",
