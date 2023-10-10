@@ -1,6 +1,6 @@
 import { database } from "../db";
 
-const todos = database.collections.get("task");
+const todos = database.collections.get("todos");
 
 export default {
   observeTodos: () => todos.query().observe(),

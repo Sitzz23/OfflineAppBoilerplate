@@ -8,10 +8,10 @@ import {
 } from "@nozbe/watermelondb/decorators";
 
 export default class Todo extends Model {
-  static table = "task";
+  static table = "todos";
 
   static associations = {
-    remarks: { type: "has_many", foreignKey: "task_id" },
+    remarks: { type: "has_many", foreignKey: "todo_id" },
   };
 
   @field("title") title;

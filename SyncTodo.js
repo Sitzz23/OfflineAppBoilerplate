@@ -10,7 +10,7 @@ const pullChanges = async ({ lastPulledAt }) => {
   console.log(lastPulledAt + "no time");
   const response = await axios.get(
     // `http://localhost:8000/sync?last_pulled_at=${lastPulledAt}`
-    "http://192.168.121.197:5000/sync?last_pulled_at=0"
+    "http://192.168.121.226:8000/sync?last_pulled_at=2023-10-09T12%3A18%3A52.350Z"
   );
   console.log(response.data);
   const { changes, timestamp } = await response.data;
