@@ -22,7 +22,7 @@ const CreateTodoRemark = ({ navigation, route }) => {
   });
 
   const onPressCreateTodo = async () => {
-    if (title == "" || body == "") {
+    if (title == "") {
       alert("Please fill required fields.");
       return;
     }
