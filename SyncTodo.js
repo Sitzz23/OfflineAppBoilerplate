@@ -2,13 +2,18 @@ import { synchronize } from "@nozbe/watermelondb/sync";
 import axios from "axios";
 
 export async function SyncTodo(database) {
-  await synchronize({ database, pullChanges, pushChanges });
+  await synchronize({
+    database,
+    pullChanges,
+    pushChanges,
+    sendCreatedAsUpdated: true,
+  });
 }
 
 const pullChanges = async ({ lastPulledAt }) => {
   console.log(lastPulledAt + " time");
   const response = await axios.get(
-    `http://192.168.121.226:8000/sync?last_pulled_at=${
+    `http://192.168.200.213:8000/sync?last_pulled_at=${
       lastPulledAt ? lastPulledAt : 0
     }`
   );
@@ -24,7 +29,7 @@ const pushChanges = async ({ changes, lastPulledAt }) => {
   console.log("Push changes", changes, lastPulledAt);
 
   const response = await axios.post(
-    `http://192.168.121.226:8000/sync?last_pulled_at=${lastPulledAt}`,
+    `http://192.168.200.213:8000/sync?last_pulled_at=${lastPulledAt}`,
     changes
   );
 
