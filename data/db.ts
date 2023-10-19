@@ -18,4 +18,19 @@ const database = new Database({
 });
 
 setGenerator(() => v4());
+
+if (__DEV__) {
+  // Import connectDatabases function and required DBDrivers
+
+  const {
+    connectDatabases,
+    WatermelonDB,
+  } = require("react-native-flipper-databases");
+
+  connectDatabases([
+    new WatermelonDB(database), // Pass in database definition
+  ]);
+}
+
+
 export { database };

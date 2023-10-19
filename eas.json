@@ -4,7 +4,15 @@
   },
   "build": {
     "development": {
+      "developmentClient": true,
       "distribution": "internal",
+      "env": {
+        "ANDROID_SDK_ROOT": "/Users/sitanshupokalwar/Library/Android/sdk",
+
+        "DATADOG_API_KEY": "public",
+
+        "DATADOG_SITE": "public"
+      },
       "android": {
         "gradleCommand": ":app:assembleDebug"
       },

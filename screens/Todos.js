@@ -155,6 +155,7 @@ const Todos = ({ navigation, todos }) => {
               paddingBottom: 12,
             }}
             ListEmptyComponent={_emptyComponent}
+            initialNumToRender={3}
           />
           {isAddRemark && renderAddRemarkUI(insets.bottom)}
         </SafeAreaView>

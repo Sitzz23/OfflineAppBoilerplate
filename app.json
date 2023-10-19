@@ -11,9 +11,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
@@ -28,6 +26,7 @@
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
+      "@liamdawson/disable-react-native-flipper-databases-expo-plugin",
       [
         "expo-build-properties",
         {
@@ -36,19 +35,15 @@
             "compileSdkVersion": 33,
             "targetSdkVersion": 33,
             "packagingOptions": {
-              "pickFirst": [
-                "**/libc++_shared.so"
-              ]
+              "pickFirst": ["**/libc++_shared.so"]
             }
           },
           "ios": {
+            "flipper": "true",
             "extraPods": [
               {
                 "name": "simdjson",
-                "configurations": [
-                  "Debug",
-                  "Release"
-                ],
+                "configurations": ["Debug", "Release"],
                 "path": "path_to/node_modules/@nozbe/simdjson",
                 "modular_headers": true
               }
