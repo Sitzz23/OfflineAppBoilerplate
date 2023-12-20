@@ -171,9 +171,9 @@ const styles = StyleSheet.create({
 });
 
 // observables
-// const ItemRemarkLive = withObservables(["remark"], ({ remark }) => ({
-//   remark: remark.observe(),
-// }))(ItemRemark);
+const ItemRemarkLive = withObservables(["remark"], ({ remark }) => ({
+  remark: remark.observe(),
+}))(ItemRemark);
 
 const ItemTodoLive = withObservables(["todo"], ({ todo }) => ({
   todo: todo.observe(),

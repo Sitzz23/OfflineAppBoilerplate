@@ -13,13 +13,13 @@ export async function SyncTodo(database) {
 const pullChanges = async ({ lastPulledAt }) => {
   console.log(lastPulledAt + " time");
   const response = await axios.get(
-    `http://192.168.200.213:8000/sync?last_pulled_at=${
+    `http://192.168.0.177:8000/sync?last_pulled_at=${
       lastPulledAt ? lastPulledAt : 0
     }`
   );
   //192.168.121.226:8081
 
-  http: console.log(JSON.stringify(changes));
+  console.log(JSON.stringify(changes));
 
   const { changes, timestamp } = await response.data;
   return { changes, timestamp };
